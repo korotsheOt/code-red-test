@@ -1,5 +1,7 @@
 <script setup>
+import Article from "./Article.vue";
 import { onMounted, ref } from "vue";
+import { convertDate, getTargetDate } from "../utils";
 import "../data";
 
 const articlesData = ref(window.LATEST_ARTICLES);
@@ -23,22 +25,13 @@ const handleCategoryCheck = () => {
 };
 
 const filterArticlesByDate = () => {
-	const currentDate = new Date();
-	const targetDate = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000);
-
+	const targetDate = getTargetDate(7);
 	filteredArticlesData.value = filteredArticlesData.value.filter((article) => new Date(article.publishDate) >= targetDate);
 }
 
 const sortArticlesByDate = () => {
 	filteredArticlesData.value.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
 }
-
-const convertDate = (date) => {
-	return new Date(date).toLocaleDateString("en-US", {
-		month: "long",
-		day: "numeric",
-	});
-};
 
 onMounted(() => {
 	handleCategoryCheck();
@@ -58,8 +51,7 @@ onMounted(() => {
 
 			<ul>
 				<li v-for="article in filteredArticlesData" :key="article.title">
-					<span>{{ article.title }}</span>
-					<span>{{ convertDate(article.publishDate) }}</span>
+					<Article :title="article.title" :date="convertDate(article.publishDate)" :url="article.url" />
 				</li>
 			</ul>
 		</div>
