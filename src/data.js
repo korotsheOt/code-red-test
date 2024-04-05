@@ -1,4 +1,4 @@
-// Provided data has no pages which have been published less than 7 days ago. 
+// Provided data has no articles which have been published less than 7 days ago. 
 // So I decided to add some objects for more comfortable testing.
 
 window.LATEST_ARTICLES = [
