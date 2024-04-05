@@ -45,7 +45,7 @@ window.LATEST_ARTICLES = [
 		"url": "/articles/2594.html"
 	},
 	{
-		"title": "Test Essay 2 published at Apr 4",
+		"title": "Test Essay 2 published at Apr 4 with a long title to check how it fits in the form size",
 		"publishDate": "2024-04-04T11:12:43.003Z",
 		"category": "essay",
 		"url": "/articles/2594.html"
@@ -63,7 +63,7 @@ window.LATEST_ARTICLES = [
 		"url": "/articles/2594.html"
 	},
 	{
-		"title": "Test News 2 published at Apr 4",
+		"title": "Test News 2 published at Apr 4 with a long title to check how it fits in the form size",
 		"publishDate": "2024-04-04T11:12:43.003Z",
 		"category": "news",
 		"url": "/articles/2594.html"

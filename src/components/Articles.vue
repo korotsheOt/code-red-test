@@ -5,6 +5,7 @@ import { convertDate, getTargetDate } from "../utils";
 import "../data";
 
 const articlesData = ref(window.LATEST_ARTICLES);
+const categories = ref(["news", "essay"]);
 const filteredArticlesData = ref();
 const checkedCategories = ref([]);
 
@@ -41,15 +42,14 @@ onMounted(() => {
 <template>
 	<div class="wrapper">
 		<h2>Latest Updates</h2>
-		<div class="articles-list">
-			<input type="checkbox" id="news" value="news" v-model="checkedCategories" @change="handleCategoryCheck()" />
-			<label for="news">News</label>
-
-			<input type="checkbox" id="essay" value="essay" v-model="checkedCategories"
-				@change="handleCategoryCheck()" />
-			<label for="essay">Essay</label>
-
-			<ul>
+		<div class="articles-block">
+			<div class="checkbox-block">
+				<label class="checkbox-label" v-for="category in categories" :key="category">
+					<input type="checkbox" :value="category" v-model="checkedCategories" @change="handleCategoryCheck()" />
+					{{ category }}
+				</label>
+			</div>
+			<ul class="articles-list">
 				<li v-for="article in filteredArticlesData" :key="article.title">
 					<Article :title="article.title" :date="convertDate(article.publishDate)" :url="article.url" />
 				</li>
@@ -58,4 +58,41 @@ onMounted(() => {
 	</div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.checkbox-block {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 2em;
+}
+
+.articles-block {
+	width: 100%;
+	max-width: 500px;
+	border: 1px solid #fff;
+	padding: 20px 30px;
+}
+
+.checkbox-label {
+	text-transform: capitalize;
+	cursor: pointer;
+}
+
+.articles-list {
+	list-style: none;
+	padding: 0;
+}
+
+@media (width <= 768px) {
+	.articles-block {
+		margin: 0 15px;
+		box-sizing: border-box;
+	}
+}
+</style>
