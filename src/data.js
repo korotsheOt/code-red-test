@@ -1,3 +1,6 @@
+// Provided data has no pages which have been published less than 7 days ago. 
+// So I decided to add some objects for more comfortable testing.
+
 window.LATEST_ARTICLES = [
 	{
 		"title": "Find new ways to travel north",
@@ -33,6 +36,42 @@ window.LATEST_ARTICLES = [
 		"title": "In-depth travel guide for Tanzania",
 		"publishDate": "2023-05-31T11:12:43.003Z",
 		"category": "essay",
+		"url": "/articles/2594.html"
+	},
+	{
+		"title": "Test Essay 1 published at Apr 3",
+		"publishDate": "2024-04-03T11:12:43.003Z",
+		"category": "essay",
+		"url": "/articles/2594.html"
+	},
+	{
+		"title": "Test Essay 2 published at Apr 4",
+		"publishDate": "2024-04-04T11:12:43.003Z",
+		"category": "essay",
+		"url": "/articles/2594.html"
+	},
+	{
+		"title": "Test Essay 3 published at Apr 5",
+		"publishDate": "2024-04-05T11:12:43.003Z",
+		"category": "essay",
+		"url": "/articles/2594.html"
+	},
+	{
+		"title": "Test News 1 published at Apr 3",
+		"publishDate": "2024-04-03T11:12:43.003Z",
+		"category": "news",
+		"url": "/articles/2594.html"
+	},
+	{
+		"title": "Test News 2 published at Apr 4",
+		"publishDate": "2024-04-04T11:12:43.003Z",
+		"category": "news",
+		"url": "/articles/2594.html"
+	},
+	{
+		"title": "Test News 3 published at Apr 5",
+		"publishDate": "2024-04-05T11:12:43.003Z",
+		"category": "news",
 		"url": "/articles/2594.html"
 	}
 ];
