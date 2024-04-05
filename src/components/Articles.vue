@@ -23,6 +23,15 @@ const handleCategoryCheck = () => {
 		return filteredArticlesData.value.slice(0, 5) && new Date(article.publishDate) >= targetDate
 	}
 	);
+	
+	filteredArticlesData.value.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+};
+
+const convertDate = (date) => {
+	return new Date(date).toLocaleDateString("en-US", {
+		month: "long",
+		day: "numeric",
+	});
 };
 
 onMounted(() => {
@@ -44,7 +53,7 @@ onMounted(() => {
 			<ul>
 				<li v-for="article in filteredArticlesData" :key="article.title">
 					<span>{{ article.title }}</span>
-					<span>{{ article.publishDate }}</span>
+					<span>{{ convertDate(article.publishDate) }}</span>
 				</li>
 			</ul>
 		</div>
