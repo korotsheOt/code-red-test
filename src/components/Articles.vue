@@ -7,9 +7,6 @@ const filteredArticlesData = ref();
 const checkedCategories = ref([]);
 
 const handleCategoryCheck = () => {
-	const currentDate = new Date();
-	const targetDate = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000);
-
 	if (checkedCategories.value.length) {
 		filteredArticlesData.value = articlesData.value.filter((article) => {
 			return checkedCategories.value.includes(article.category);
@@ -19,13 +16,22 @@ const handleCategoryCheck = () => {
 		filteredArticlesData.value = articlesData.value;
 	}
 
-	filteredArticlesData.value = filteredArticlesData.value.filter((article) => {
-		return filteredArticlesData.value.slice(0, 5) && new Date(article.publishDate) >= targetDate
-	}
-	);
-	
-	filteredArticlesData.value.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+	filteredArticlesData.value.slice(0, 5);
+
+	filterArticlesByDate();
+	sortArticlesByDate();
 };
+
+const filterArticlesByDate = () => {
+	const currentDate = new Date();
+	const targetDate = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000);
+
+	filteredArticlesData.value = filteredArticlesData.value.filter((article) => new Date(article.publishDate) >= targetDate);
+}
+
+const sortArticlesByDate = () => {
+	filteredArticlesData.value.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+}
 
 const convertDate = (date) => {
 	return new Date(date).toLocaleDateString("en-US", {
